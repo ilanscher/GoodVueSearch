@@ -4,6 +4,14 @@
     <template v-slot:default>
       <v-card>
         <div class="active-cyan-3 active-cyan-4 mb-3">
+          <label for="agree"
+            ><input
+              class="mt-5 ml-3"
+              id="agree"
+              type="checkbox"
+              value="agree"
+              v-model="checked" /></label
+          ><span class="pl-2">Click to disable delete button</span>
           <input
             class="mt-5 form-control"
             v-model="search"
@@ -18,6 +26,7 @@
           <td :style="{ color: [item] }">{{ item }}</td>
           <td>
             <button
+              :disabled="checked"
               class="btn btn-danger btn-sm"
               @click="deleteFromList(index)"
             >
@@ -40,7 +49,7 @@ export default {
   data() {
     return {
       search: "",
-
+      checked: false,
       list: [
         "Black",
         "Navy",

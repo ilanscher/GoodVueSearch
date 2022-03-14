@@ -34,28 +34,20 @@
     </v-app-bar>
 
     <v-main>
-      <!-- <HelloWorld /> -->
       <SearchBar />
     </v-main>
   </v-app>
 </template>
 
 <script>
-// import HelloWorld from "./components/HelloWorld";
 import SearchBar from "./components/SearchBar.vue";
 
 export default {
   name: "App",
-  // props: {
-  //   color: String,
-  // },
   components: {
-    // HelloWorld,
     SearchBar,
   },
 
-  data: () => ({
-    //
-  }),
+  data: () => ({}),
 };
 </script>
