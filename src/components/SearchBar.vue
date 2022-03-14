@@ -4,27 +4,31 @@
     <template v-slot:default>
       <v-card>
         <div class="active-cyan-3 active-cyan-4 mb-3">
-          <label for="agree"
-            ><input
-              class="mt-5 ml-3"
-              id="agree"
-              type="checkbox"
-              value="agree"
-              v-model="checked" /></label
-          ><span class="pl-2">Click to disable delete button</span>
           <input
+            class="mt-5 ml-3"
+            id="agree"
+            type="checkbox"
+            v-model="checked"
+          />
+          <span class="pl-2">Click to disable delete button</span>
+          <input
+            autofocus
             class="mt-5 form-control"
             v-model="search"
             type="text"
             placeholder="Search"
+            style="width: 300px"
           />
         </div>
       </v-card>
 
       <tbody>
         <tr v-for="(item, index) in filterColor" :key="index">
-          <td :style="{ color: [item] }">{{ item }}</td>
-          <td>
+          <td :style="{ color: [item] }">
+            <input class="ml-2 mr-2" type="checkbox" />
+            {{ item }}
+          </td>
+          <td style="float: right">
             <button
               :disabled="checked"
               class="btn btn-danger btn-sm"
@@ -210,6 +214,8 @@ export default {
   computed: {
     filterColor: function () {
       return this.list.filter((item) => {
+        item = item.toLowerCase();
+        this.search = this.search.toLowerCase();
         return item.match(this.search);
       });
     },
